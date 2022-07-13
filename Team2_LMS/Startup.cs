@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Team2_LMS.DataAccesslayer;
+using Team2_LMS.Repository;
 
 namespace Team2_LMS
 {
@@ -27,10 +30,14 @@ namespace Team2_LMS
         {
 
             services.AddControllers();
+            services.AddDbContextPool<DataAccesser>(options => options.UseSqlServer(Configuration.GetConnectionString("DBConnector")));
+            services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<IEmployeeRepo, EmployeeRepo>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Team2_LMS", Version = "v1" });
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
