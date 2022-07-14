@@ -52,5 +52,16 @@ namespace Team2_LMS.Controllers
             }
             return NotFound();
         }
+        [HttpPatch]
+        [Route("UpdateEmployee")]
+        public async Task<IActionResult> UpdateEmployee(int? EmployeeId,EmployeeDB employeeDB)
+        {
+            if(EmployeeId!=null)
+            {
+                await iemployeeRepo.UpdateEmp(EmployeeId,employeeDB);
+                return Ok();
+            }
+            return NotFound();
+        }
     }
 }

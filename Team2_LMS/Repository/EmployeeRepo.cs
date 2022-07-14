@@ -50,5 +50,21 @@ namespace Team2_LMS.Repository
             var maped = mapper.Map<EmployeeDB>(data);
             return data;
         }
+
+        public async Task UpdateEmp(int? EmployeeId, EmployeeDB employeeDB)
+        {
+            var data = await dataAccesser.employeeDBs.FirstOrDefaultAsync(x => x.EmployeeId == EmployeeId);
+            if(data!=null)
+            {
+                data.FirstName = employeeDB.FirstName;
+                data.LastName = employeeDB.LastName;
+                data.E_Mail = employeeDB.E_Mail;
+                data.ContactNumber = employeeDB.ContactNumber;
+                data.DateJoined = employeeDB.DateJoined;
+                data.Department = employeeDB.Department;
+                data.Password = employeeDB.Password;
+                await dataAccesser.SaveChangesAsync();
+            }
+        }
     }
 }
