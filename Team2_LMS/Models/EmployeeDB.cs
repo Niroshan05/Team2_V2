@@ -28,7 +28,7 @@ namespace Team2_LMS.Models
         public int LeaveBalance { get; set; }
         [Required]
         [DataType(DataType.Password)]
-        public string Possword { get; set; }
+        public string Password { get; set; }
         
     }
 }

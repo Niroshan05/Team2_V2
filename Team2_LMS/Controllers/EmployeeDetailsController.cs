@@ -27,5 +27,19 @@ namespace Team2_LMS.Controllers
             var ar = await iemployeeRepo.GetAllEmployee();
             return Ok(ar);
         }
+        [HttpGet]
+        [Route("ShowSpecific")]
+        public async Task<IActionResult> ShowSpecific( int EmployeeId)
+        {
+            var ar = await iemployeeRepo.SearchById(EmployeeId);
+            return Ok(ar);
+        }
+        [HttpPost]
+        [Route("AddEmployee")]
+        public async Task<int> Addnew(EmployeeModel employeeModel)
+        {
+            var ar = await iemployeeRepo.AddNewEmp(employeeModel);
+            return 1;
+        }
     }
 }

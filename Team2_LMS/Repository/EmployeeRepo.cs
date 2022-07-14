@@ -5,20 +5,40 @@ using System.Linq;
 using System.Threading.Tasks;
 using Team2_LMS.DataAccesslayer;
 using Team2_LMS.Models;
+using AutoMapper;
 
 namespace Team2_LMS.Repository
 {
     public class EmployeeRepo : IEmployeeRepo
     {
         private readonly DataAccesser dataAccesser;
+        private readonly IMapper mapper;
 
-        public EmployeeRepo(DataAccesser dataAccesser)
+        public EmployeeRepo(DataAccesser dataAccesser,IMapper mapper)
         {
             this.dataAccesser = dataAccesser;
+            this.mapper = mapper;
         }
+
+        public async Task<int> AddNewEmp(EmployeeModel employeeModel)
+        {
+            var data = mapper.Map<EmployeeDB>(employeeModel);
+            dataAccesser.employeeDBs.Add(data);
+            await dataAccesser.SaveChangesAsync();
+            return 1;
+
+        }
+
         public async Task<List<EmployeeDB>> GetAllEmployee()
         {
             var data = await dataAccesser.employeeDBs.ToListAsync();
+            return data;
+        }
+
+        public async Task<EmployeeDB> SearchById(int EmployeeId)
+        {
+            var data = await dataAccesser.employeeDBs.FirstOrDefaultAsync(x => x.EmployeeId == EmployeeId);
+            var maped = mapper.Map<EmployeeDB>(data);
             return data;
         }
     }

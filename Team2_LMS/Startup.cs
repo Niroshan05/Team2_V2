@@ -33,6 +33,7 @@ namespace Team2_LMS
             services.AddDbContextPool<DataAccesser>(options => options.UseSqlServer(Configuration.GetConnectionString("DBConnector")));
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IEmployeeRepo, EmployeeRepo>();
+            services.AddCors(option => option.AddDefaultPolicy(b => b.WithOrigins("*").AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Team2_LMS", Version = "v1" });
@@ -51,6 +52,7 @@ namespace Team2_LMS
             }
 
             app.UseRouting();
+            app.UseCors();
 
             app.UseAuthorization();
 

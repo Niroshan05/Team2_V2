@@ -9,5 +9,7 @@ namespace Team2_LMS.Repository
     public interface IEmployeeRepo
     {
         Task<List<EmployeeDB>> GetAllEmployee();
+        Task<EmployeeDB> SearchById(int EmployeeId);
+        Task<int> AddNewEmp(EmployeeModel employeeModel);
     }
 }
