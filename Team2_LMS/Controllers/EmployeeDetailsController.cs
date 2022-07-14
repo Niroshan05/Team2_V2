@@ -36,10 +36,21 @@ namespace Team2_LMS.Controllers
         }
         [HttpPost]
         [Route("AddEmployee")]
-        public async Task<int> Addnew(EmployeeModel employeeModel)
+        public async Task<int> AddnewEmployee(EmployeeModel employeeModel)
         {
             var ar = await iemployeeRepo.AddNewEmp(employeeModel);
             return 1;
+        }
+        [HttpDelete]
+        [Route("DeleteEmployee")]
+        public async Task<IActionResult> DeleteEmployee(int? EmployeeId)
+        {
+            if(EmployeeId!=null)
+            {
+                await iemployeeRepo.RemoveEmp(EmployeeId);
+                return Ok();
+            }
+            return NotFound();
         }
     }
 }

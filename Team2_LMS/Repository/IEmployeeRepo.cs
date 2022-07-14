@@ -11,5 +11,6 @@ namespace Team2_LMS.Repository
         Task<List<EmployeeDB>> GetAllEmployee();
         Task<EmployeeDB> SearchById(int EmployeeId);
         Task<int> AddNewEmp(EmployeeModel employeeModel);
+        Task RemoveEmp(int? EmployeeId);
     }
 }

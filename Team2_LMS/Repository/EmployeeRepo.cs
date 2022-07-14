@@ -35,6 +35,15 @@ namespace Team2_LMS.Repository
             return data;
         }
 
+        public async Task RemoveEmp(int? EmployeeId)
+        {
+            var data = await dataAccesser.employeeDBs.FirstOrDefaultAsync(x => x.EmployeeId == EmployeeId);
+            if (data != null) {
+                dataAccesser.Remove(data);
+            }
+            await dataAccesser.SaveChangesAsync();
+        }
+
         public async Task<EmployeeDB> SearchById(int EmployeeId)
         {
             var data = await dataAccesser.employeeDBs.FirstOrDefaultAsync(x => x.EmployeeId == EmployeeId);
