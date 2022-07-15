@@ -10,7 +10,7 @@ using Team2_LMS.DataAccesslayer;
 namespace Team2_LMS.Migrations
 {
     [DbContext(typeof(DataAccesser))]
-    [Migration("20220713170120_init")]
+    [Migration("20220715070211_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,7 +53,7 @@ namespace Team2_LMS.Migrations
                     b.Property<int>("LeaveBalance")
                         .HasColumnType("int");
 
-                    b.Property<string>("Possword")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
