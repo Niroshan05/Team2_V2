@@ -51,7 +51,7 @@ namespace Team2_LMS.Migrations
                     b.Property<int>("LeaveBalance")
                         .HasColumnType("int");
 
-                    b.Property<string>("Possword")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

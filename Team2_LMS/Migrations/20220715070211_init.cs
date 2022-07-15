@@ -20,7 +20,7 @@ namespace Team2_LMS.Migrations
                     Department = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateJoined = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LeaveBalance = table.Column<int>(type: "int", nullable: false),
-                    Possword = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
