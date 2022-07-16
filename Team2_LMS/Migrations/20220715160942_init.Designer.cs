@@ -10,7 +10,7 @@ using Team2_LMS.DataAccesslayer;
 namespace Team2_LMS.Migrations
 {
     [DbContext(typeof(DataAccesser))]
-    [Migration("20220715070211_init")]
+    [Migration("20220715160942_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,6 +60,51 @@ namespace Team2_LMS.Migrations
                     b.HasKey("EmployeeId");
 
                     b.ToTable("employeeDBs");
+                });
+
+            modelBuilder.Entity("Team2_LMS.Models.ManagerDb", b =>
+                {
+                    b.Property<int>("ManagerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<long>("ContactNumber")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DateJoined")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Department")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("E_Mail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LeaveBalance")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Manager")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ManagerId");
+
+                    b.ToTable("ManagerDbs");
                 });
 #pragma warning restore 612, 618
         }
