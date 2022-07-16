@@ -35,7 +35,7 @@ namespace Team2_LMS.Repository
             return data;
         }
 
-        public async Task RemoveManager(int? EmployeeId)
+        public async Task RemoveManager(int? ManagerId)
         {
             var data = await dataAccesser.managerDbs.FirstOrDefaultAsync(x => x.ManagerId == ManagerId);
             if (data != null)
@@ -52,13 +52,13 @@ namespace Team2_LMS.Repository
             return data;
         }
 
-        public async Task UpdateManagaer(int? ManagerId, ManagerDb managerDb)
+        public async Task UpdateManager(int? ManagerId, ManagerDb managerDb)
         {
-            var data = await dataAccesser.employeeDBs.FirstOrDefaultAsync(x => x.ManagerId == ManagerId);
+            var data = await dataAccesser.managerDbs.FirstOrDefaultAsync(x => x.ManagerId == ManagerId);
             if (data != null)
             {
                 data.FirstName = managerDb.FirstName;
-                data.LastName = ManagerId.LastName;
+                data.LastName = managerDb.LastName;
                 data.E_Mail = managerDb.E_Mail;
                 data.ContactNumber = managerDb.ContactNumber;
                 data.DateJoined = managerDb.DateJoined;

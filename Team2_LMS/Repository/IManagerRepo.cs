@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-
+using Team2_LMS.Models;
 
 namespace Team2_LMS.Repository
 {
-    public interface ManagerRepo
+    public interface IManagerRepo
     {
         Task<List<ManagerDb>> GetAllManager();
         Task<ManagerDb> SearchById(int ManagerId);
