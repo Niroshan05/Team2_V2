@@ -20,6 +20,8 @@ namespace Team2_LMS.Repository
             this.mapper = mapper;
         }
 
+       
+
         public async Task<int> AddNewEmp(EmployeeModel employeeModel)
         {
             var data = mapper.Map<EmployeeDB>(employeeModel);
@@ -66,5 +68,6 @@ namespace Team2_LMS.Repository
                 await dataAccesser.SaveChangesAsync();
             }
         }
+        
     }
 }
