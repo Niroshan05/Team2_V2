@@ -34,6 +34,7 @@ namespace Team2_LMS
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IEmployeeRepo, EmployeeRepo>();
             services.AddScoped<ICeoRepo, CeoRepo>();
+            services.AddScoped<IManagerRepo, ManagerRepo>();
             services.AddCors(option => option.AddDefaultPolicy(b => b.WithOrigins("*").AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
             services.AddSwaggerGen(c =>
             {
