@@ -42,7 +42,7 @@ namespace Team2_LMS.Controllers
             return 1;
         }
         [HttpDelete]
-        [Route("DeleteEmployee")]
+        [Route("DeleteEmployee/{EmployeeId?}")]
         public async Task<IActionResult> DeleteEmployee(int? EmployeeId)
         {
             if(EmployeeId!=null)
@@ -53,7 +53,7 @@ namespace Team2_LMS.Controllers
             return NotFound();
         }
         [HttpPatch]
-        [Route("UpdateEmployee")]
+        [Route("UpdateEmployee/{EmployeeId?}")]
         public async Task<IActionResult> UpdateEmployee(int? EmployeeId,EmployeeDB employeeDB)
         {
             if(EmployeeId!=null)
