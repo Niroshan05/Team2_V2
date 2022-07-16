@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Team2_LMS.Repository
 {
-    public interface ManagerRepo
+    public interface IManagerRepo
     {
         Task<List<ManagerDb>> GetAllManager();
         Task<ManagerDb> SearchById(int ManagerId);
