@@ -23,7 +23,10 @@ namespace Team2_LMS.Models
         public string Department { get; set; }
         [Required]
         [DataType(DataType.Date)]
+       
         public DateTime DateJoined { get; set; }
+        [Required]
+        public int ManagerId { get; set; }
         [Required]
         public int LeaveBalance { get; set; }
         [Required]

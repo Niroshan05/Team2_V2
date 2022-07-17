@@ -63,6 +63,7 @@ namespace Team2_LMS.Repository
                 data.E_Mail = employeeDB.E_Mail;
                 data.ContactNumber = employeeDB.ContactNumber;
                 data.DateJoined = employeeDB.DateJoined;
+                data.ManagerId = employeeDB.ManagerId;
                 data.Department = employeeDB.Department;
                 data.Password = employeeDB.Password;
                 await dataAccesser.SaveChangesAsync();

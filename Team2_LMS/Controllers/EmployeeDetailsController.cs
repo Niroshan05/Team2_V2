@@ -28,7 +28,7 @@ namespace Team2_LMS.Controllers
             return Ok(ar);
         }
         [HttpGet]
-        [Route("ShowSpecific")]
+        [Route("ShowSpecific/{EmployeeId?}")]
         public async Task<IActionResult> ShowSpecific( int EmployeeId)
         {
             var ar = await iemployeeRepo.SearchById(EmployeeId);

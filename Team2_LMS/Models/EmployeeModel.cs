@@ -26,6 +26,8 @@ namespace Team2_LMS.Models
         [DataType(DataType.Date)]
         public DateTime DateJoined { get; set; }
         [Required]
+        public int ManagerId { get; set; }
+        [Required]
         public int LeaveBalance { get; set; }
         [Required]
         [DataType(DataType.Password)]
