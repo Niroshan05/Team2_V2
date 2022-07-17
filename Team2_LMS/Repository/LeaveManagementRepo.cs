@@ -66,6 +66,7 @@ namespace Team2_LMS.Repository
                 data.Numberofdays = leaveManagementDb.Numberofdays;
                 data.StartDate = leaveManagementDb.StartDate;
                 data.EndDate = leaveManagementDb.EndDate;
+                data.Status = leaveManagementDb.Status;
                 data.Reason = leaveManagementDb.Reason;
                 await dataAccesser.SaveChangesAsync();
             }
