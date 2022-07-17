@@ -14,6 +14,7 @@ namespace Team2_LMS.Helper
             CreateMap<EmployeeModel, EmployeeDB>().ReverseMap();
             CreateMap<CeoModel, CeoDB>().ReverseMap();
             CreateMap<ManagerModel, ManagerDb>().ReverseMap();
+            CreateMap<LeaveManagementModel, LeaveManagementDB>().ReverseMap();
         }
     }
 }

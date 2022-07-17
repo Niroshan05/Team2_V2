@@ -17,5 +17,7 @@ namespace Team2_LMS.DataAccesslayer
         public DbSet<ManagerDb> managerDbs { get; set; }
         public DbSet<ManagerDb> ManagerDbs { get; set; }
         public DbSet<CeoDB> ceoDBs { get; set; }
+
+        public DbSet<LeaveManagementDB> leavemanagementDbs { get; set; }
     }
 }
