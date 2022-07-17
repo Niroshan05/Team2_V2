@@ -10,7 +10,7 @@ using Team2_LMS.DataAccesslayer;
 namespace Team2_LMS.Migrations
 {
     [DbContext(typeof(DataAccesser))]
-    [Migration("20220716093619_init")]
+    [Migration("20220717105526_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,6 +91,9 @@ namespace Team2_LMS.Migrations
                     b.Property<int>("LeaveBalance")
                         .HasColumnType("int");
 
+                    b.Property<int>("ManagerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -98,6 +101,45 @@ namespace Team2_LMS.Migrations
                     b.HasKey("EmployeeId");
 
                     b.ToTable("employeeDBs");
+                });
+
+            modelBuilder.Entity("Team2_LMS.Models.LeaveManagementDB", b =>
+                {
+                    b.Property<int>("LeaveId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EmployeeLeaveBalance")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EmployeeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Numberofdays")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LeaveId");
+
+                    b.ToTable("leavemanagementDbs");
                 });
 
             modelBuilder.Entity("Team2_LMS.Models.ManagerDb", b =>

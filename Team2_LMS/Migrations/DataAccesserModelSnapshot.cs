@@ -89,6 +89,9 @@ namespace Team2_LMS.Migrations
                     b.Property<int>("LeaveBalance")
                         .HasColumnType("int");
 
+                    b.Property<int>("ManagerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

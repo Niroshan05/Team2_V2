@@ -38,6 +38,7 @@ namespace Team2_LMS.Migrations
                     ContactNumber = table.Column<long>(type: "bigint", nullable: false),
                     Department = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateJoined = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ManagerId = table.Column<int>(type: "int", nullable: false),
                     LeaveBalance = table.Column<int>(type: "int", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
