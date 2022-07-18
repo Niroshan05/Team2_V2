@@ -63,5 +63,19 @@ namespace Team2_LMS.Controllers
             }
             return NotFound();
         }
+        [HttpGet]
+        [Route("Login/{E_Mail}/{Password}")]
+        public async Task<IActionResult> Loging(string? E_Mail,string? Password)
+        {
+            var add = await iemployeeRepo.Login(E_Mail, Password);
+            if (add != null)
+            {
+                return Ok(add);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 }
