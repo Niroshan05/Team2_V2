@@ -27,27 +27,6 @@ namespace Team2_LMS.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "employeeDBs",
-                columns: table => new
-                {
-                    EmployeeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    E_Mail = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ContactNumber = table.Column<long>(type: "bigint", nullable: false),
-                    Department = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateJoined = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ManagerId = table.Column<int>(type: "int", nullable: false),
-                    LeaveBalance = table.Column<int>(type: "int", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_employeeDBs", x => x.EmployeeId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "leavemanagementDbs",
                 columns: table => new
                 {
@@ -87,6 +66,38 @@ namespace Team2_LMS.Migrations
                 {
                     table.PrimaryKey("PK_ManagerDb", x => x.ManagerId);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "employeeDBs",
+                columns: table => new
+                {
+                    EmployeeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    E_Mail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ContactNumber = table.Column<long>(type: "bigint", nullable: false),
+                    Department = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateJoined = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ManagerId = table.Column<int>(type: "int", nullable: false),
+                    LeaveBalance = table.Column<int>(type: "int", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_employeeDBs", x => x.EmployeeId);
+                    table.ForeignKey(
+                        name: "FK_employeeDBs_ManagerDb_ManagerId",
+                        column: x => x.ManagerId,
+                        principalTable: "ManagerDb",
+                        principalColumn: "ManagerId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_employeeDBs_ManagerId",
+                table: "employeeDBs",
+                column: "ManagerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
