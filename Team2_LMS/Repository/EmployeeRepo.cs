@@ -20,6 +20,8 @@ namespace Team2_LMS.Repository
             this.mapper = mapper;
         }
 
+       
+
         public async Task<int> AddNewEmp(EmployeeModel employeeModel)
         {
             var data = mapper.Map<EmployeeDB>(employeeModel);
@@ -33,6 +35,13 @@ namespace Team2_LMS.Repository
         {
             var data = await dataAccesser.employeeDBs.ToListAsync();
             return data;
+        }
+
+        public async Task<int> Login(string E_Mail, string Password)
+        {
+            var data = await dataAccesser.employeeDBs.FirstOrDefaultAsync(x => x.E_Mail == E_Mail&x.Password==Password);
+            var map = mapper.Map<EmployeeDB>(data);
+            return 1;
         }
 
         public async Task RemoveEmp(int? EmployeeId)
@@ -61,10 +70,12 @@ namespace Team2_LMS.Repository
                 data.E_Mail = employeeDB.E_Mail;
                 data.ContactNumber = employeeDB.ContactNumber;
                 data.DateJoined = employeeDB.DateJoined;
+                data.ManagerId = employeeDB.ManagerId;
                 data.Department = employeeDB.Department;
                 data.Password = employeeDB.Password;
                 await dataAccesser.SaveChangesAsync();
             }
         }
+        
     }
 }
