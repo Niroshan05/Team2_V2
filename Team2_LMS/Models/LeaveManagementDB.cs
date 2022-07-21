@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Team2_LMS.Models
 {
@@ -11,16 +12,14 @@ namespace Team2_LMS.Models
         [Key]
         [Required]
         public int LeaveId { get; set; }
-
         [Required]
-        public int EmployeeId { get; set; }
+        public int? EmployeeId { get; set; }
+        [ForeignKey("EmployeeId")]
+        public virtual EmployeeDB EmployeeDB { get; set; }
         [Required]
-        public string EmployeeName { get; set; }
-        [Required]
-
-        public int EmployeeLeaveBalance { get; set; }
-        [Required]
-        public int Numberofdays { get; set; }
+        public int? ManagerId { get; set; }
+        [ForeignKey("ManagerId")]
+        public virtual ManagerDb ManagerDb { get; set; }
         [Required]
         [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
@@ -28,11 +27,18 @@ namespace Team2_LMS.Models
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
         [Required]
+        public int Numberofdays { get; set; }
+        [Required]
+        public string Type { get; set; }  
+        [Required]
         public string Status { get; set; }
         [Required]
-
         public string Reason { get; set; }
-        
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime AppliedOn { get; set; }
+
+
 
 
     }

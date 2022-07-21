@@ -13,17 +13,14 @@ namespace Team2_LMS.Models
         [Key]
         [Required]
         public int LeaveId { get; set; }
-
-        [ForeignKey ("EmployeeId")] 
-        public int EmployeeId { get; set; }
         [Required]
-        public string EmployeeName { get; set; }
+        public int? EmployeeId { get; set; }
+        [ForeignKey("EmployeeId")]
+        public virtual EmployeeDB EmployeeDB { get; set; }
         [Required]
-
-        public int EmployeeLeaveBalance { get; set; }
-        
-        [Required]
-        public int Numberofdays { get; set; }
+        public int? ManagerId { get; set; }
+        [ForeignKey("ManagerId")]
+        public virtual ManagerDb ManagerDb { get; set; }
         [Required]
         [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
@@ -31,11 +28,18 @@ namespace Team2_LMS.Models
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
         [Required]
+        public int Numberofdays { get; set; }
+        [Required]
+        public string Type { get; set; }
+        [Required]
         public string Status { get; set; }
         [Required]
-
         public string Reason { get; set; }
-       
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime AppliedOn { get; set; }
+        public string ManagerComment { get; set; }
+
 
 
     }
