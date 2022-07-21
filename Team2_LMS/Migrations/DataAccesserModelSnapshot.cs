@@ -89,7 +89,8 @@ namespace Team2_LMS.Migrations
                     b.Property<int>("LeaveBalance")
                         .HasColumnType("int");
 
-                    b.Property<int>("ManagerId")
+                    b.Property<int?>("ManagerId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Password")
@@ -97,6 +98,8 @@ namespace Team2_LMS.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EmployeeId");
+
+                    b.HasIndex("ManagerId");
 
                     b.ToTable("employeeDBs");
                 });
@@ -183,6 +186,17 @@ namespace Team2_LMS.Migrations
                     b.HasKey("ManagerId");
 
                     b.ToTable("ManagerDb");
+                });
+
+            modelBuilder.Entity("Team2_LMS.Models.EmployeeDB", b =>
+                {
+                    b.HasOne("Team2_LMS.Models.ManagerDb", "ManagerDb")
+                        .WithMany()
+                        .HasForeignKey("ManagerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ManagerDb");
                 });
 #pragma warning restore 612, 618
         }
