@@ -13,7 +13,7 @@ namespace Team2_LMS.Repository
         Task<int> AddNewEmp(EmployeeModel employeeModel);
         Task RemoveEmp(int? EmployeeId);
         Task UpdateEmp(int? EmployeeId, EmployeeDB employeeDB);
-        Task<int> Login(string E_Mail, string Password);
+        Task<EmployeeDB> Login(string E_Mail, string Password);
 
     }
 }

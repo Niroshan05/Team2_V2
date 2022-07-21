@@ -29,7 +29,7 @@ namespace Team2_LMS.Controllers
             return Ok(ar);
         }
         [HttpGet]
-        [Route("ShowSpecific")]
+        [Route("ShowSpecific/{LeaveId?}")]
         public async Task<IActionResult> ShowSpecific(int LeaveId)
         {
             var ar = await ileavemanagementRepo.SearchById(LeaveId);

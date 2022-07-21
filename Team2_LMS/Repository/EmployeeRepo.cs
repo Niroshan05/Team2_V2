@@ -37,11 +37,11 @@ namespace Team2_LMS.Repository
             return data;
         }
 
-        public async Task<int> Login(string E_Mail, string Password)
+        public async Task<EmployeeDB> Login(string E_Mail, string Password)
         {
             var data = await dataAccesser.employeeDBs.FirstOrDefaultAsync(x => x.E_Mail == E_Mail&x.Password==Password);
             var map = mapper.Map<EmployeeDB>(data);
-            return 1;
+            return map;
         }
 
         public async Task RemoveEmp(int? EmployeeId)
