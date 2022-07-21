@@ -9,7 +9,8 @@ namespace Team2_LMS.Repository
     public interface ILeaveManagementRepo
     {
         Task<List<LeaveManagementDB>> GetAllLeave();
-        Task<LeaveManagementDB> SearchById(int LeaveId);
+        Task<LeaveManagementDB> SearchByEmpId(int EmployeeId);
+        Task<LeaveManagementDB> SearchByManId(int ManagerId);
         Task<int> AddNewLeave(LeaveManagementModel leavemanagementModel);
         Task RemoveLeave(int? LeaveId);
         Task UpdateLeave(int? LeaveId, LeaveManagementDB leavemanagementDb);

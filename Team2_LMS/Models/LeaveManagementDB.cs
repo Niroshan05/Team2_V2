@@ -12,10 +12,16 @@ namespace Team2_LMS.Models
         [Key]
         [Required]
         public int LeaveId { get; set; }
+        //[Required]
+        //public int EmployeeId { get; set; }
+        //[Required]
+        //public int ManagerId { get; set; }
+        //adding foreign key
         [Required]
         public int? EmployeeId { get; set; }
+        [Required]
         [ForeignKey("EmployeeId")]
-        public virtual EmployeeDB EmployeeDB { get; set; }
+        public virtual EmployeeDB Employeedb { get; set; }
         [Required]
         public int? ManagerId { get; set; }
         [ForeignKey("ManagerId")]
@@ -37,7 +43,7 @@ namespace Team2_LMS.Models
         [Required]
         [DataType(DataType.Date)]
         public DateTime AppliedOn { get; set; }
-
+        public string ManagerComment { get; set; }
 
 
 

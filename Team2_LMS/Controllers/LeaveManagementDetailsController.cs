@@ -29,10 +29,17 @@ namespace Team2_LMS.Controllers
             return Ok(ar);
         }
         [HttpGet]
-        [Route("ShowSpecific/{LeaveId?}")]
-        public async Task<IActionResult> ShowSpecific(int LeaveId)
+        [Route("ShowSpecificEmp/{EmployeeId?}")]
+        public async Task<IActionResult> ShowSpecificEmp(int EmployeeId)
         {
-            var ar = await ileavemanagementRepo.SearchById(LeaveId);
+            var ar = await ileavemanagementRepo.SearchByEmpId(EmployeeId);
+            return Ok(ar);
+        }
+        [HttpGet]
+        [Route("ShowSpecificMan")]
+        public async Task<IActionResult> ShowSpecificMan(int ManagerId)
+        {
+            var ar = await ileavemanagementRepo.SearchByEmpId(ManagerId);
             return Ok(ar);
         }
         [HttpPost]

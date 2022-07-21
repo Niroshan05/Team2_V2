@@ -48,9 +48,16 @@ namespace Team2_LMS.Repository
             await dataAccesser.SaveChangesAsync();
         }
 
-        public async Task<LeaveManagementDB> SearchById(int LeaveId)
+        public async Task<LeaveManagementDB> SearchByEmpId(int EmployeeId)
         {
-            var data = await dataAccesser.leavemanagementDbs.FirstOrDefaultAsync(x => x.LeaveId == LeaveId);
+            var data = await dataAccesser.leavemanagementDbs.FirstOrDefaultAsync(x => x.EmployeeId == EmployeeId);
+            var maped = mapper.Map<LeaveManagementDB>(data);
+            return data;
+        }
+
+        public async Task<LeaveManagementDB> SearchByManId(int ManagerId)
+        {
+            var data = await dataAccesser.leavemanagementDbs.FirstOrDefaultAsync(x => x.ManagerId == ManagerId);
             var maped = mapper.Map<LeaveManagementDB>(data);
             return data;
         }
@@ -61,13 +68,15 @@ namespace Team2_LMS.Repository
             if (data != null)
             {
                 data.EmployeeId = leaveManagementDb.EmployeeId;
-                data.EmployeeName = leaveManagementDb.EmployeeName;
-                data.EmployeeLeaveBalance = leaveManagementDb.EmployeeLeaveBalance;
-                data.Numberofdays = leaveManagementDb.Numberofdays;
+                data.ManagerId = leaveManagementDb.ManagerId;
                 data.StartDate = leaveManagementDb.StartDate;
                 data.EndDate = leaveManagementDb.EndDate;
+                data.Numberofdays = leaveManagementDb.Numberofdays;
+                data.Type = leaveManagementDb.Type;
                 data.Status = leaveManagementDb.Status;
                 data.Reason = leaveManagementDb.Reason;
+                data.AppliedOn = leaveManagementDb.AppliedOn;
+                data.ManagerComment = leaveManagementDb.ManagerComment;
                 await dataAccesser.SaveChangesAsync();
             }
         }

@@ -13,14 +13,20 @@ namespace Team2_LMS.Models
         [Key]
         [Required]
         public int LeaveId { get; set; }
+        //[Required]
+        //public int EmployeeId { get; set; }
+        //[Required]
+        //public int ManagerId { get; set; }
         [Required]
-        public int? EmployeeId { get; set; }
         [ForeignKey("EmployeeId")]
-        public virtual EmployeeDB EmployeeDB { get; set; }
+        public int EmployeeId { get; set; }
+        
+        //public virtual EmployeeDB EmployeeDB { get; set; }
         [Required]
-        public int? ManagerId { get; set; }
         [ForeignKey("ManagerId")]
-        public virtual ManagerDb ManagerDb { get; set; }
+        public int ManagerId { get; set; }
+        
+        //public virtual ManagerDb ManagerDb { get; set; }
         [Required]
         [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
