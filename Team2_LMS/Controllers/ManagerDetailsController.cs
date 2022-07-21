@@ -27,7 +27,7 @@ namespace Team2_LMS.Controllers
             return Ok(ar);
         }
         [HttpGet]
-        [Route("ShowSpecific")]
+        [Route("ShowSpecific/{ManagerId?}")]
         public async Task<IActionResult> ShowSpecific(int ManagerId)
         {
             var ar = await imanagerRepo.SearchById(ManagerId);
@@ -61,6 +61,20 @@ namespace Team2_LMS.Controllers
                 return Ok();
             }
             return NotFound();
+        }
+        [HttpGet]
+        [Route("Login/{E_Mail}/{Password}")]
+        public async Task<IActionResult> Loging(string? E_Mail, string? Password)
+        {
+            var add = await imanagerRepo.Login(E_Mail, Password);
+            if (add != null)
+            {
+                return Ok(add);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }
