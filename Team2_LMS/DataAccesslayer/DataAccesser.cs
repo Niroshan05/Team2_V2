@@ -17,7 +17,15 @@ namespace Team2_LMS.DataAccesslayer
         public DbSet<ManagerDb> managerDbs { get; set; }
         public DbSet<ManagerDb> ManagerDbs { get; set; }
         public DbSet<CeoDB> ceoDBs { get; set; }
-
         public DbSet<LeaveManagementDB> leavemanagementDbs { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            foreach (var foreignKey in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+    {
+                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+        }
     }
 }
