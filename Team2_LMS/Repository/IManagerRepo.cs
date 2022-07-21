@@ -13,6 +13,7 @@ namespace Team2_LMS.Repository
         Task<int> AddNewManager(ManagerModel managerModel);
         Task RemoveManager(int? ManagerId);
         Task UpdateManager(int? ManagerId, ManagerDb managerDb);
+        Task<int> Login(string E_Mail, string Password);
 
     }
 }

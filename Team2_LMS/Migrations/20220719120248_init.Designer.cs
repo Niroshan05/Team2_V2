@@ -10,7 +10,7 @@ using Team2_LMS.DataAccesslayer;
 namespace Team2_LMS.Migrations
 {
     [DbContext(typeof(DataAccesser))]
-    [Migration("20220717112717_init")]
+    [Migration("20220719120248_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
