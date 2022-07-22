@@ -14,6 +14,7 @@ namespace Team2_LMS.Repository
         Task RemoveEmp(int? EmployeeId);
         Task UpdateEmp(int? EmployeeId, EmployeeDB employeeDB);
         Task<EmployeeDB> Login(string E_Mail, string Password);
+        Task<ManagerDb> GetName(int ManagerId);
 
     }
 }

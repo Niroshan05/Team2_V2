@@ -30,7 +30,16 @@ namespace Team2_LMS.Repository
             return 1;
 
         }
-
+        //beleo is trail code
+        public async Task<ManagerDb> GetName(int ManagerId)
+        {
+            var data = dataAccesser.managerDbs.FromSqlRaw($"select managerId from ManagerDb where employeeId={ManagerId}").FirstOrDefault();
+            return data;
+        }
+        /// <summary>
+        /// above is trial code
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<EmployeeDB>> GetAllEmployee()
         {
             var data = await dataAccesser.employeeDBs.ToListAsync();
