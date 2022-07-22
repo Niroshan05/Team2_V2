@@ -19,7 +19,6 @@ namespace Team2_LMS.Models
         //adding foreign key
         [Required]
         public int? EmployeeId { get; set; }
-        [Required]
         [ForeignKey("EmployeeId")]
         public virtual EmployeeDB Employeedb { get; set; }
         [Required]

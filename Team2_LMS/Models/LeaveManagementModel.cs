@@ -13,10 +13,6 @@ namespace Team2_LMS.Models
         [Key]
         [Required]
         public int LeaveId { get; set; }
-        //[Required]
-        //public int EmployeeId { get; set; }
-        //[Required]
-        //public int ManagerId { get; set; }
         [Required]
         [ForeignKey("EmployeeId")]
         public int EmployeeId { get; set; }
