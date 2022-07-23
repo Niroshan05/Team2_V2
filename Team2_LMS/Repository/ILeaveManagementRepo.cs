@@ -10,7 +10,7 @@ namespace Team2_LMS.Repository
     {
         Task<List<LeaveManagementDB>> GetAllLeave();
         Task<List<LeaveManagementDB>> SearchByEmpId(int EmployeeId);
-        Task<LeaveManagementDB> SearchByManId(int ManagerId);
+        Task<List<LeaveManagementDB>> ShowRepLeaves(int EmployeeId);
         Task<int> AddNewLeave(LeaveManagementModel leavemanagementModel);
         Task RemoveLeave(int? LeaveId);
         Task UpdateLeave(int? LeaveId, LeaveManagementDB leavemanagementDb);

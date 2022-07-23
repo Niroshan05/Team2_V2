@@ -25,12 +25,13 @@ namespace Team2_LMS.Models
         [Required]
         [DataType(DataType.Date)]
         public DateTime DateJoined { get; set; }
-        [Required]
+        
         public int? ManagerId { get; set; }
-        [ForeignKey("ManagerId")]
-        public virtual ManagerDb ManagerDb { get; set; }
-        [Required]
-        public int LeaveBalance { get; set; }
+
+        
+       
+        public int? LeaveBalance { get; set; }
+
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }

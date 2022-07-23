@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Team2_LMS.Models
 {
     public class ManagerDb
     {
         [Key]
-        public int ManagerId { get; set; }
+        public int sno { get; set; }
+        [Required]
+        public int? EmployeeId { get; set; }
+        [ForeignKey("EmployeeId")]
+        public virtual EmployeeDB Employeedb { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
@@ -21,15 +26,6 @@ namespace Team2_LMS.Models
         public long ContactNumber { get; set; }
         [Required]
         public string Department { get; set; }
-        [Required]
-        [DataType(DataType.Date)]
-        public string Manager { get; set; }
-        [Required]
-        public DateTime DateJoined { get; set; }
-        [Required]
-        public int LeaveBalance { get; set; }
-        [Required]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
+        
     }
 }

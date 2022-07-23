@@ -40,9 +40,9 @@ namespace Team2_LMS.Repository
             var map = mapper.Map<EmployeeDB>(data);
             return 1;
         }
-        public async Task RemoveManager(int? ManagerId)
+        public async Task RemoveManager(int? EmployeeId)
         {
-            var data = await dataAccesser.managerDbs.FirstOrDefaultAsync(x => x.ManagerId == ManagerId);
+            var data = await dataAccesser.managerDbs.FirstOrDefaultAsync(x => x.EmployeeId == EmployeeId);
             if (data != null)
             {
                 dataAccesser.Remove(data);
@@ -50,26 +50,24 @@ namespace Team2_LMS.Repository
             await dataAccesser.SaveChangesAsync();
         }
 
-        public async Task<ManagerDb> SearchById(int ManagerId)
+        public async Task<ManagerDb> SearchById(int EmployeeId)
         {
-            var data = await dataAccesser.managerDbs.FirstOrDefaultAsync(x => x.ManagerId == ManagerId);
+            var data = await dataAccesser.managerDbs.FirstOrDefaultAsync(x => x.EmployeeId == EmployeeId);
             var maped = mapper.Map<ManagerDb>(data);
             return data;
         }
 
-        public async Task UpdateManager(int? ManagerId, ManagerDb managerDb)
+        public async Task UpdateManager(int? EmployeeId, ManagerDb managerDb)
         {
-            var data = await dataAccesser.managerDbs.FirstOrDefaultAsync(x => x.ManagerId == ManagerId);
+            var data = await dataAccesser.managerDbs.FirstOrDefaultAsync(x => x.EmployeeId == EmployeeId);
             if (data != null)
             {
+                data.EmployeeId = managerDb.EmployeeId;
                 data.FirstName = managerDb.FirstName;
                 data.LastName = managerDb.LastName;
                 data.E_Mail = managerDb.E_Mail;
                 data.ContactNumber = managerDb.ContactNumber;
-                data.DateJoined = managerDb.DateJoined;
                 data.Department = managerDb.Department;
-                data.Manager = managerDb.Manager;
-                data.Password = managerDb.Password;
                 await dataAccesser.SaveChangesAsync();
             }
         }

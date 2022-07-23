@@ -27,10 +27,10 @@ namespace Team2_LMS.Controllers
             return Ok(ar);
         }
         [HttpGet]
-        [Route("ShowSpecific/{ManagerId?}")]
-        public async Task<IActionResult> ShowSpecific(int ManagerId)
+        [Route("ShowSpecific/{EmployeeId?}")]
+        public async Task<IActionResult> ShowSpecific(int EmployeeId)
         {
-            var ar = await imanagerRepo.SearchById(ManagerId);
+            var ar = await imanagerRepo.SearchById(EmployeeId);
             return Ok(ar);
         }
         [HttpPost]
@@ -41,7 +41,7 @@ namespace Team2_LMS.Controllers
             return 1;
         }
         [HttpDelete]
-        [Route("DeleteManager/{ManagerId?}")]
+        [Route("DeleteManager/{EmployeeId?}")]
         public async Task<IActionResult> DeleteManager(int? ManagerId)
         {
             if (ManagerId != null)
@@ -52,7 +52,7 @@ namespace Team2_LMS.Controllers
             return NotFound();
         }
         [HttpPatch]
-        [Route("UpdateManager/{ManagerId?}")]
+        [Route("UpdateManager/{EmployeeId?}")]
         public async Task<IActionResult> UpdateManager(int? ManagerId, ManagerDb managerDb)
         {
             if (ManagerId != null)
@@ -62,19 +62,6 @@ namespace Team2_LMS.Controllers
             }
             return NotFound();
         }
-        [HttpGet]
-        [Route("Login/{E_Mail}/{Password}")]
-        public async Task<IActionResult> Loging(string? E_Mail, string? Password)
-        {
-            var add = await imanagerRepo.Login(E_Mail, Password);
-            if (add != null)
-            {
-                return Ok(add);
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
+       
     }
 }

@@ -12,7 +12,7 @@ namespace Team2_LMS.Helper
         public ApplicationMapper()
         {
             CreateMap<EmployeeModel, EmployeeDB>().ReverseMap();
-            CreateMap<CeoModel, CeoDB>().ReverseMap();
+           // CreateMap<CeoModel, CeoDB>().ReverseMap();
             CreateMap<ManagerModel, ManagerDb>().ReverseMap();
             CreateMap<LeaveManagementModel, LeaveManagementDB>().ReverseMap();
         }

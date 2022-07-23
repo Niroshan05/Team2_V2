@@ -33,7 +33,7 @@ namespace Team2_LMS
             services.AddDbContextPool<DataAccesser>(options => options.UseSqlServer(Configuration.GetConnectionString("DBConnector")));
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IEmployeeRepo, EmployeeRepo>();
-            services.AddScoped<ICeoRepo, CeoRepo>();
+           // services.AddScoped<ICeoRepo, CeoRepo>();
             services.AddScoped<IManagerRepo, ManagerRepo>();
             services.AddScoped<ILeaveManagementRepo, LeaveManagementRepo>();
             services.AddCors(option => option.AddDefaultPolicy(b => b.WithOrigins("*").AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));

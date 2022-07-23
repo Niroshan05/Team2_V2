@@ -55,11 +55,12 @@ namespace Team2_LMS.Repository
             return data;
         }
 
-        public async Task<LeaveManagementDB> SearchByManId(int ManagerId)
+
+        public async Task<List<LeaveManagementDB>> ShowRepLeaves(int EmployeeId)
         {
-            var data = await dataAccesser.leavemanagementDbs.FirstOrDefaultAsync(x => x.ManagerId == ManagerId);
-            var maped = mapper.Map<LeaveManagementDB>(data);
+            var data = await dataAccesser.leavemanagementDbs.Where(x => x.ManagerId == EmployeeId).ToListAsync();
             return data;
+
         }
 
         public async Task UpdateLeave(int? LeaveId, LeaveManagementDB leaveManagementDb)

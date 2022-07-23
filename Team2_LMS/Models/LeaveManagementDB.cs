@@ -22,9 +22,9 @@ namespace Team2_LMS.Models
         [ForeignKey("EmployeeId")]
         public virtual EmployeeDB Employeedb { get; set; }
         [Required]
-        public int? ManagerId { get; set; }
-        [ForeignKey("ManagerId")]
-        public virtual ManagerDb ManagerDb { get; set; }
+        public int ManagerId { get; set; }
+        //[ForeignKey("EmployeeId")]
+        //public virtual EmployeeDB EmployeeDB { get; set; }
         [Required]
         [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }

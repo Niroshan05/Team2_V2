@@ -19,7 +19,7 @@ namespace Team2_LMS.Models
         
         //public virtual EmployeeDB EmployeeDB { get; set; }
         [Required]
-        [ForeignKey("ManagerId")]
+        
         public int ManagerId { get; set; }
         
         //public virtual ManagerDb ManagerDb { get; set; }
