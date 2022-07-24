@@ -32,11 +32,23 @@ namespace Team2_LMS.Repository
 
         }
 
-        public async Task<int> ApproveDeny(int? LeaveId, string Status, string ManagerComments)
+        public async Task ApproveDeny(int? LeaveId, string Status, string ManagerComments)
         {
-            var data =  dataAccesser.managerDbs.FromSqlRaw(
-                $"alter table leavemanagementDbs status={Status}, managerComments={ManagerComments} where leaveId={LeaveId}").FirstOrDefault();
-            return 1;
+            //var data =  dataAccesser.managerDbs.FromSqlRaw(
+            //    $"UPDATE leavemanagementDbs SET status = {Status} ,managerComment = {ManagerComments} WHERE leaveId = { LeaveId }").FirstOrDefault();
+            var data = await dataAccesser.leavemanagementDbs.FirstOrDefaultAsync(x => x.LeaveId == LeaveId);
+            
+            if (data != null)
+            {
+                
+                data.Status = Status;
+                data.ManagerComment = ManagerComments;
+
+                await dataAccesser.SaveChangesAsync();
+
+            }
+            
+            
         }
 
         public async Task<List<LeaveManagementDB>> GetAllLeave()
