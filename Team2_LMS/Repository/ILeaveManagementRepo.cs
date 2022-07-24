@@ -14,5 +14,6 @@ namespace Team2_LMS.Repository
         Task<int> AddNewLeave(LeaveManagementModel leavemanagementModel);
         Task RemoveLeave(int? LeaveId);
         Task UpdateLeave(int? LeaveId, LeaveManagementDB leavemanagementDb);
+        Task<int> ApproveDeny(int? LeaveId, string Status, string? ManagerComments);
     }
 }

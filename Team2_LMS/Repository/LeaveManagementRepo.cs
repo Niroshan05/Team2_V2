@@ -32,6 +32,13 @@ namespace Team2_LMS.Repository
 
         }
 
+        public async Task<int> ApproveDeny(int? LeaveId, string Status, string ManagerComments)
+        {
+            var data =  dataAccesser.managerDbs.FromSqlRaw(
+                $"alter table leavemanagementDbs status={Status}, managerComments={ManagerComments} where leaveId={LeaveId}").FirstOrDefault();
+            return 1;
+        }
+
         public async Task<List<LeaveManagementDB>> GetAllLeave()
         {
             var data = await dataAccesser.leavemanagementDbs.ToListAsync();

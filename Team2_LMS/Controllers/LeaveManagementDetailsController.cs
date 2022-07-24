@@ -71,5 +71,19 @@ namespace Team2_LMS.Controllers
             }
             return NotFound();
         }
+        [HttpPatch]
+        [Route("AcceptDeny/{LeaveId?}/{Status?}/{ManagerComments?}")]
+        public async Task<int> AcceptDeny(int? LeaveId, string Status, string? ManagerComments)
+        {
+            if (LeaveId != null)
+            {
+                await ileavemanagementRepo.ApproveDeny(LeaveId, Status, ManagerComments);
+                    return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }
